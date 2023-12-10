@@ -17,7 +17,7 @@ const SignupForm = () => {
     
     async function submitHandler(e){
         e.preventDefault();
-        if( password != confirmPassword){
+        if( password !== confirmPassword){
             toast.error("Passwords do not match");
             return;
         }
@@ -30,14 +30,14 @@ const SignupForm = () => {
         console.log("user: " , user);
 
         toast.success("Sign up successfully");
-        // navigate("/login");
+        navigate("/login");
     }
 
   return (
     <div className='w-full'>
       
 
-      <form action="" onSubmit={submitHandler} className='w-full mt-5'>
+      <form action="" onSubmit={submitHandler} className='w-full mt-5 flex flex-col gap-y-4'>
 
         <div className="flex w-full justify-between gap-x-4">
 

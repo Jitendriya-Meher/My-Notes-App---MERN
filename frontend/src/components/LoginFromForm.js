@@ -37,7 +37,7 @@ const LoginFromForm = (props) => {
   return (
 
     <form action="" onSubmit={submitHandler}
-    className='flex flex-col w-full gap-y-4 mt-6'>
+    className='flex flex-col w-full gap-y-2 mt-6'>
 
         <label htmlFor="">
             <p className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'>

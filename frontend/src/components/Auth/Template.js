@@ -2,7 +2,6 @@ import React from 'react';
 import frameImage from "./frame.png";
 import LoginFromForm from '../LoginFromForm';
 import SignupForm from '../SignupForm';
-import {FcGoogle} from "react-icons/fc"
 
 const Template = (props) => {
 
@@ -24,18 +23,6 @@ const Template = (props) => {
             {
                 formType === "signup" ? <SignupForm setIsLoggedIn={setIsLoggedIn}></SignupForm> : <LoginFromForm  setIsLoggedIn={setIsLoggedIn}></LoginFromForm>
             }
-
-            <div className="flex w-full items-center gap-x-2 my-4">
-                <div className='h-[1px] bg-richblack-700 w-full'></div>
-                <p className='text-richblack-100 font-medium leading-[1.38rem]'>OR</p>
-                <div className="h-[1px] bg-richblack-700 w-full"></div>
-            </div>
-
-            <button className='w-full flex justify-center items-center rounded-[8px] font-medium text-richblack-100 border border-richblack-700 px-[12px] py-[8px] gap-x-2 mt-6'>
-            <FcGoogle></FcGoogle>
-            <p>
-                Sign Up With Google
-            </p></button>
 
         </div>
 
