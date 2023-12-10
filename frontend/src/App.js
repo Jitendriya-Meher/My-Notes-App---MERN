@@ -17,7 +17,7 @@ import DeleteNote from "./pages/DeleteNote";
 
 function App() {
 
-  const [isLoggedin,setIsLoggedIn] = useState(true);
+  const [isLoggedin,setIsLoggedIn] = useState(false);
 
   return <div className="w-screen min-h-screen bg-richblack-900 flex flex-col">
 

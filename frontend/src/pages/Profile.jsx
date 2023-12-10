@@ -5,6 +5,7 @@ const Profile = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2,setShowPassword2] = useState(false);
+  const [showPassword3,setShowPassword3] = useState(false);
 
   return (
     <div className="flex w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-0 justify-between">
@@ -72,7 +73,7 @@ const Profile = () => {
                   </span>
               </p>
 
-              <form className='flex flex-col w-full gap-y-4 mt-2'>
+              <form className='flex flex-col w-full gap-y-4 mt-1'>
 
               <button className='bg-orange-600 rounded-[8px] font-medium px-[12px] py-[8px] mt-4 w-full text-richblack-900'>
                 Delete your all Notes
@@ -124,14 +125,15 @@ const Profile = () => {
                     
                 </label>
 
-                <label htmlFor="" className='relative mt-1'>
+                <div className="flex gap-x-4 justify-between w-full mt-2">
+                  <label htmlFor="" className='relative w-full'>
                     <p
                     className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'>New Password <span
                     className='text-pink-200'>*</span></p>
                     <input type={showPassword2 ? "text" : "password"}
                     name="password"
                     id="" required
-                    placeholder='Enter your old Password'
+                    placeholder='Enter Password'
                     className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-[1px] outline-1'
                     />
 
@@ -145,11 +147,33 @@ const Profile = () => {
                         {showPassword2 ? (<AiOutlineEyeInvisible fontSize={24} fill='#afb2bf'></AiOutlineEyeInvisible>) : (<AiOutlineEye fontSize={24} fill='#afb2bf'></AiOutlineEye>)}
                     </span>
                     
-                </label>
+                  </label>
+                  <label htmlFor="" className='relative w-full'>
+                    <p
+                    className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'>Confirm New Password <span
+                    className='text-pink-200'>*</span></p>
+                    <input type={showPassword3 ? "text" : "password"}
+                    name="password"
+                    id="" required
+                    placeholder='Confirm Password'
+                    className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-[1px] outline-1'
+                    />
 
+                    <span onClick={
+                        () => {
+                            setShowPassword3(!showPassword3);
+                        }
+                    }
+                    className='absolute right-3 top-[38px] cursor-pointer'
+                    >
+                        {showPassword3 ? (<AiOutlineEyeInvisible fontSize={24} fill='#afb2bf'></AiOutlineEyeInvisible>) : (<AiOutlineEye fontSize={24} fill='#afb2bf'></AiOutlineEye>)}
+                    </span>
+                    
+                </label>
+                </div>
 
                 <button className=' bg-yellow-500 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-4 w-full'>
-                  Change Password
+                  Change your Password
                 </button>
 
               </form>
@@ -176,8 +200,6 @@ const Profile = () => {
               </button>
 
               </form>
-
-              
 
             </div>
         </div>

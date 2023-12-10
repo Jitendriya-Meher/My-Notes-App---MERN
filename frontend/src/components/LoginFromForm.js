@@ -76,7 +76,7 @@ const LoginFromForm = (props) => {
                 {showPassword ? (<AiOutlineEyeInvisible fontSize={24} fill='#afb2bf'></AiOutlineEyeInvisible>) : (<AiOutlineEye fontSize={24} fill='#afb2bf'></AiOutlineEye>)}
             </span>
 
-            <Link to="#">
+            <Link to="/contact">
                 <p className='text-xs mt-1 text-blue-100 ml-auto absolute right-0'>Forget PassWord</p>
             </Link>
             
