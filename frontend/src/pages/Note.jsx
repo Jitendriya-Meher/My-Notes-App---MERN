@@ -8,6 +8,14 @@ const Note = () => {
             <h1 className='text-richblack-5 font-semibold text-[2rem] leading-[2.3rem]'>
             Lorem ipsum dolor sit amet.
             </h1>
+
+            <p className='text-[0.9rem] leading-[1.2rem] mt-4 text-right'>
+                <span className='text-richblack-100'>Created At </span>
+                <span className='text-blue-500 italic'>
+                    date.now()
+                </span>
+            </p>
+
             <p className='text-[1rem] leading-[1.2rem] mt-4 text-justify'>
                 <span className='text-richblack-100'>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id, eius distinctio velit nobis exercitationem dolor minus cupiditate consequatur, enim aliquam magni sunt hic mollitia, obcaecati suscipit itaque nostrum error! Reprehenderit dignissimos sequi soluta sit eius libero, atque debitis magni numquam ipsa eveniet amet itaque quia ipsam consequatur beatae accusamus? Saepe delectus aperiam maxime eius dolorum suscipit dolore distinctio voluptate eligendi. In, dignissimos! Sunt voluptatibus, deserunt suscipit id odio mollitia exercitationem ipsa. Quod provident fugit ex nostrum deserunt, ducimus cupiditate obcaecati in ea ab consequuntur, amet aut reiciendis? Natus nam fugiat dignissimos optio. Assumenda quam cumque incidunt quia ex odit totam?
