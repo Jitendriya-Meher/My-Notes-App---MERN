@@ -11,6 +11,9 @@ import { useState } from "react";
 import PrivateRoute from "./components/PrivateRoute"
 import AddNotes from "./pages/AddNotes";
 import Profile from "./pages/Profile";
+import EditNotes from "./pages/EditNotes";
+import Note from "./pages/Note";
+import DeleteNote from "./pages/DeleteNote";
 
 function App() {
 
@@ -33,16 +36,35 @@ function App() {
           <Dashboard></Dashboard>
         </PrivateRoute>
       }></Route>
+
       <Route path="/add" element={
         <PrivateRoute isLoggedin={isLoggedin}>
           <AddNotes></AddNotes>
         </PrivateRoute>
       }></Route>
+
+      <Route path="/edit/:id" element={
+        <PrivateRoute isLoggedin={isLoggedin}>
+          <EditNotes></EditNotes>
+        </PrivateRoute>
+      }></Route>
+
       <Route path="/profile" element={
         <PrivateRoute isLoggedin={isLoggedin}>
           <Profile></Profile>
         </PrivateRoute>
       }></Route>
+
+      <Route path="/note/:id" element={
+          <PrivateRoute isLoggedin={isLoggedin}>
+            <Note></Note>
+          </PrivateRoute>
+      }></Route>
+
+      <Route path="/delete/:id" element={         
+          <DeleteNote></DeleteNote>
+      }></Route>
+
 
     </Routes>
 

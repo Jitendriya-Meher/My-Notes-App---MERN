@@ -14,7 +14,7 @@ const NavBar = (props) => {
     <div className='flex justify-between items-center w-11/12 max-w-[1160px] py-4 mx-auto'>
      
      <Link to='/'>
-        <img src={logo} width={160} height={32}loading='lazy'></img>
+        <img src={logo} alt='logo' width={160} height={32} loading='lazy'></img>
      </Link>
 
      <nav className='navbar'>
