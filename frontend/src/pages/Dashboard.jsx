@@ -25,7 +25,7 @@ function Dashboard() {
             />
         </label>
         <button
-        className='bg-blue-600 rounded-[8px] font-medium text-richblack-900 w-1/5 px-[12px] py-[12px]'
+        className='bg-blue-700 rounded-[8px] font-medium text-richblack-900 w-1/5 px-[12px] py-[12px]'
         >
           Search
         </button>
@@ -42,11 +42,10 @@ function Dashboard() {
       <div className="w-full p-10 pt-6 flex gap-8 flex-wrap" ref={ref}>
         {
           arr.map((item,index) =>(
-            <NoteCard key={index} index={index} reference={ref}></NoteCard>
+            <NoteCard key={index} index={index} item={item} reference={ref}></NoteCard>
           ))
         }
       </div>
-
     </div>
   );
 }
