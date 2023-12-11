@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai";
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const SignupForm = () => {
 
@@ -21,22 +22,39 @@ const SignupForm = () => {
             toast.error("Passwords do not match");
             return;
         }
+        if( !password || !firstName || !lastName || !email){
+            toast.error("please enter all required fields");
+            return;
+        }
 
         const user = {
-            name: firstName+" "+lastName,
+            username: firstName+" "+lastName,
             email: email,
             password: password
         };
-        console.log("user: " , user);
 
-        toast.success("Sign up successfully");
-        navigate("/login");
+        try{
+            const response = await axios.post(`http://localhost:4000/api/auth/signup`,user);
+            console.log("response",response);
+            const result = response.data;
+
+            if( result.success){
+                toast.success(result.message);
+                navigate("/login");
+            }
+            else{
+                toast.error(result.message);
+            }
+        }
+        catch(err){
+            toast.error("please try again");
+            return;
+        }  
     }
 
   return (
     <div className='w-full'>
       
-
       <form action="" onSubmit={submitHandler} className='w-full mt-5 flex flex-col gap-y-4'>
 
         <div className="flex w-full justify-between gap-x-4">

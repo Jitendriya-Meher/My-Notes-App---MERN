@@ -1,13 +1,40 @@
 
+import { useSelector } from "react-redux";
 import NoteCard from "../components/Notes/NoteCard";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 function Dashboard() {
 
   const ref = useRef(null);
   const [query, setQuery] = useState("");
+  const [notes,setNotes] = useState([]);
+
+  const auth = useSelector(state=>state.auth);
+  console.log("auth", auth);
 
   const arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26];
+
+  const getAllNotes = async () => {
+    try{
+      const res = await axios.get(`http://localhost:4000/api/note/all`,{
+        headers:{
+          Authorization: 'Bearer ' + auth.token
+        }
+      });
+      console.log("res",res.data);
+
+      setNotes(res.data.note);
+    }
+    catch(err){
+      toast.error("please wait...");
+    }
+  }
+
+  useEffect(()=>{
+    getAllNotes();
+  },[]);
 
   return (
     <div className="flex w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-0 justify-between flex-col">
@@ -41,7 +68,7 @@ function Dashboard() {
 
       <div className="w-full p-10 pt-6 flex gap-8 flex-wrap" ref={ref}>
         {
-          arr.map((item,index) =>(
+          notes.map((item,index) =>(
             <NoteCard key={index} index={index} item={item} reference={ref}></NoteCard>
           ))
         }

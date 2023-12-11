@@ -1,13 +1,71 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const EditNoteForm = ({noteTitle, noteDesc}) => {
+const EditNoteForm = () => {
 
-    const [title,setTitle] = useState(noteTitle);
-    const [desc, setDesc] = useState(noteDesc);
+    const [title,setTitle] = useState('');
+    const [desc, setDesc] = useState('');
+
+    const {id} = useParams();
+    const navigate = useNavigate();
+
+    const getNote = async () => {
+        try{
+            console.log("id",id);
+
+            const res = await axios.get(`http://localhost:4000/api/note/${id}`);
+            console.log("res",res.data);
+
+            const result = res.data;
+
+            if(result.success){
+                toast.success(result.message);
+                setTitle(result.note.title);
+                setDesc(result.note.description);
+            }
+            else{
+                toast.error(result.message);
+                navigate("/dashboard");
+            }
+        }
+        catch(err){
+            toast.error("error in fetching note");
+            navigate("/dashboard");
+        }
+    }
+
+    const handleEdit = async (e) => {
+        e.preventDefault();
+        try{
+            const res = await axios.patch(`http://localhost:4000/api/note/edit/${id}`,{title,description:desc});
+            console.log("res",res);
+
+            const result = res.data;
+
+            if(result.success){
+                toast.success(result.message);
+                navigate("/dashborad");
+            }
+            else{
+                toast.error(result.message);
+            }
+        }
+        catch(err){
+            toast.error("error in editing note");
+        }
+    }
+
+    useEffect(()=>{
+        getNote();
+    },[]);
 
   return (
     <form action=""
-    className='flex flex-col w-full gap-y-4 mt-6'>
+    className='flex flex-col w-full gap-y-4 mt-6'
+    onSubmit={handleEdit}
+    >
 
         <label htmlFor="">
             <p className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'>
@@ -46,6 +104,7 @@ const EditNoteForm = ({noteTitle, noteDesc}) => {
 
         <button
         className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-8'
+        
         >
             Edit Note
         </button>

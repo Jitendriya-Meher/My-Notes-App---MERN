@@ -1,13 +1,49 @@
+import axios from 'axios';
 import React, { useState } from 'react'
+import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const AddNoteForm = ({noteTitle,noteDesc}) => {
 
     const [title,setTitle] = useState(noteTitle);
     const [desc, setDesc] = useState(noteDesc);
+    const auth = useSelector(state=>state.auth);
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const authToken = `Bearer ${auth.token}`;
+        console.log("auth token: " , authToken);
+        try{
+            const res = await axios.post(`http://localhost:4000/api/note/add`,
+                {title, description:desc},{
+                    headers:{
+                        Authorization: authToken
+                    }
+                }
+            );
+            console.log("res",res);
+            const result = res.data;
+
+            if( result.success){
+                toast.success(result.message);
+                navigate("/dashborad");
+            }
+            else{
+                toast.error(result.message);
+            }
+        }
+        catch(err){
+            toast.error("please try again");
+            return;
+        }
+    }
 
   return (
     <form action=""
-    className='flex flex-col w-full gap-y-4 mt-6'>
+    className='flex flex-col w-full gap-y-4 mt-6'
+    onSubmit={handleSubmit}>
 
         <label htmlFor="">
             <p className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'>

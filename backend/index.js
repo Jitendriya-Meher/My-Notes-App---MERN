@@ -15,8 +15,10 @@ app.use(express.json());
 app.use(cors());
 
 // import routes
-const authRoute = require("./routes/auth-route.js")
-app.use("/api/auth",authRoute)
+const authRoute = require("./routes/auth-route.js");
+const noteRoute = require("./routes/note-route.js");
+app.use("/api/auth",authRoute);
+app.use("/api/note",noteRoute);
 
 // mount routes
 
@@ -33,4 +35,4 @@ dbConnect();
 
 app.get('/',(req,res)=>{
     res.send(`<h1>Welcome To MERN Project Jitendriya !!!</h1>`)
-})
+});

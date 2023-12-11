@@ -10,8 +10,8 @@ const AddNotes = () => {
       description2="Education to future-proof your career."
       image={loginImg}
       formType="add"
-      noteTitle="add title"
-      noteDesc="add description"
+      noteTitle=""
+      noteDesc=""
       ></NoteTemplate>
   )
 }

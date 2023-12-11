@@ -1,16 +1,16 @@
+const Note = require("../models/note");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 
 const loginController = async (req,res) => {
 
     try{
-
         const {email,password} = req.body;
 
         const userExists = await User.findOne({email});
 
         if( !userExists ){
-            return res.status(500).json({
+            return res.status(200).json({
                 message: "please sign up first",
                 success: false
             });
@@ -19,8 +19,8 @@ const loginController = async (req,res) => {
         const comparePasswords = await bcrypt.compare(password, userExists.password);
 
         if( !comparePasswords){
-            return res.status(500).json({
-                message: "passwords do not match, try again",
+            return res.status(200).json({
+                message: "passwords doesn't match, try again",
                 success: false,
             });
         }
@@ -50,7 +50,7 @@ const signupController = async (req,res) => {
         const userExists = await User.findOne({email});
 
         if( userExists){
-            return res.status(400).json({
+            return res.status(200).json({
                 success: false,
                 message: 'User already exists please log in'
             })
@@ -78,4 +78,89 @@ const signupController = async (req,res) => {
     }
 }
 
-module.exports = {loginController,signupController};
+const deleteAccount = async (req, res) => {
+    try{
+        const userID = req.userID;
+
+        const delNotes = await Note.deleteMany({userID});
+        const delAcc = await User.findByIdAndDelete(userID);
+
+        return res.status(200).json({
+            message:"account deleted successfully",
+            success: true,
+            note:delNotes,
+            user:delAcc
+        });
+    }
+    catch(err){
+        return res.status(500).json({
+            message:"server Error while deleting user account",
+            success:false
+        });
+    }
+}
+
+const editProfile = async (req, res) => {
+    try{
+        const userID = req.userID;
+        const {username, email} = req.body;
+
+        const newUser = await User.findByIdAndUpdate(userID, {username,email},{new:true});
+
+        if( !newUser){
+            return res.status(400).json({
+                userID,
+                message:"user not found",
+            });
+        }
+
+        return res.status(200).json({
+            message:"profile edited successfully",
+            success: true,
+            user: newUser
+        });
+    }
+    catch(err){
+        return res.status(500).json({
+            message:"server Error while edit user profile",
+            success:false
+        });
+    }
+}
+
+const changePassword = async ( req, res) => {
+    try{
+
+        const userID = req.userID;
+        const {oldPassword, newPassword} = req.body;
+
+        const dbUser = await User.findById(userID);
+
+        const compOldPassword = await bcrypt.compare(oldPassword, dbUser.password);
+
+        if( !compOldPassword){
+            return res.status(400).json({
+                message:"old password doesnot match",
+                success:false
+            });
+        }
+
+        const newHashPassword = await bcrypt.hash(newPassword,10);
+
+        const newUser = await User.findByIdAndUpdate(userID,{password:newHashPassword},{new:true});
+
+        return res.status(200).json({
+            message:"password successfully",
+            success: true,
+            user: newUser
+        });
+    }
+    catch(err){
+        return res.status(500).json({
+            message:"server Error while changing password",
+            success:false
+        });
+    }
+}
+
+module.exports = {loginController,signupController,deleteAccount,editProfile,changePassword};

@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai";
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
+
+  const auth = useSelector(state=>state.auth);
 
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2,setShowPassword2] = useState(false);
@@ -33,8 +36,9 @@ const Profile = () => {
                     <span className='text-pink-200'> *</span>
                     </p>
                     <input type="text" name="name"
-                    id="" required
+                    required
                     placeholder='Edit your name'
+                    value={auth.username}
                     className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-[1px] outline-1'
                     />
                 </label>
@@ -46,6 +50,7 @@ const Profile = () => {
                     </p>
                     <input type="email" name="email"
                     id="" required
+                    value={auth.email}
                     placeholder='Edit your email address'
                     className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-[1px] outline-1'
                     />
