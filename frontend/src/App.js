@@ -7,29 +7,29 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
-import { useState } from "react";
 import PrivateRoute from "./components/PrivateRoute"
 import AddNotes from "./pages/AddNotes";
 import Profile from "./pages/Profile";
 import EditNotes from "./pages/EditNotes";
 import Note from "./pages/Note";
 import DeleteNote from "./pages/DeleteNote";
+import { useSelector } from "react-redux";
 
 function App() {
 
-  const [isLoggedin,setIsLoggedIn] = useState(false);
+  const {isLoggedin} = useSelector(state=>state.auth);
 
   return <div className="w-screen min-h-screen bg-richblack-900 flex flex-col">
 
-    <NavBar isLoggedin={isLoggedin} setIsLoggedIn={setIsLoggedIn}></NavBar>
+    <NavBar></NavBar>
 
     <Routes>
 
       <Route path="/" element={<Home></Home>}></Route>
       <Route path="/about" element={<About></About>}></Route>
       <Route path="/contact" element={<Contact></Contact>}></Route>
-      <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn}></Login>}></Route>
-      <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn}></Signup>}></Route>
+      <Route path="/login" element={<Login></Login>}></Route>
+      <Route path="/signup" element={<Signup></Signup>}></Route>
 
       <Route path="/dashborad" element={
         <PrivateRoute isLoggedin={isLoggedin}>

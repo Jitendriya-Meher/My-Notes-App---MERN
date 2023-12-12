@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { logInAuth } from '../store/slices/authSlice';
+import { logInAuth } from '../../store/slices/authSlice';
 
 const LoginFromForm = (props) => {
 
@@ -13,6 +13,8 @@ const LoginFromForm = (props) => {
         password:""
     });
     const dispatch = useDispatch();
+    const [showPassword,setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     function changeHandler(e){
         const {name,value} = e.target;
@@ -24,12 +26,6 @@ const LoginFromForm = (props) => {
         });
     }
 
-    const [showPassword,setShowPassword] = useState(false);
-
-    const {setIsLoggedIn} = props;
-
-    const navigate = useNavigate();
-
     async function submitHandler(e){
         e.preventDefault();
 
@@ -39,7 +35,6 @@ const LoginFromForm = (props) => {
             const result = res.data;
 
             if( result.success){
-                setIsLoggedIn(true);
                 toast.success(result.message);
                 const payload = {
                     username:result.user.username,

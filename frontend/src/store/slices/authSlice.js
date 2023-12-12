@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   username:"",
   email:"",
-  token:""
+  token:"",
+  isLoggedin:false
 };
 
 export const authSlice = createSlice({
@@ -15,11 +16,23 @@ export const authSlice = createSlice({
         state.username = username;
         state.email = email;
         state.token = token;
+        state.isLoggedin = true;
+      },
+      editAuth: (state, action) => {
+        const {username,email} = action.payload;
+        state.username = username;
+        state.email = email;
+      },
+      logOutAuth:(state,action) => {
+        state.isLoggedin = false;
+        state.token = "";
+        state.username = "";
+        state.email = "";
       }
     },
-  })
+})
   
-  // Action creators are generated for each case reducer function
-  export const { logInAuth } = authSlice.actions
+// Action creators are generated for each case reducer function
+export const { logInAuth, editAuth, logOutAuth } = authSlice.actions
   
-  export default authSlice.reducer
+export default authSlice.reducer

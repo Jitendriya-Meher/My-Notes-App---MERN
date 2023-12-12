@@ -1,11 +1,12 @@
 import React from 'react';
 import frameImage from "./frame.png";
-import LoginFromForm from '../LoginFromForm';
-import SignupForm from '../SignupForm';
+import SignupForm from './SignupForm';
+import LoginFromForm from './LoginFromForm';
+
 
 const Template = (props) => {
 
-    const {title,description1,description2,image,formType,setIsLoggedIn} = props;
+    const {title,description1,description2,image,formType} = props;
 
   return (
     <div className='flex w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-0 justify-between'>
@@ -21,7 +22,7 @@ const Template = (props) => {
             </p>
 
             {
-                formType === "signup" ? <SignupForm setIsLoggedIn={setIsLoggedIn}></SignupForm> : <LoginFromForm  setIsLoggedIn={setIsLoggedIn}></LoginFromForm>
+                formType === "signup" ? <SignupForm></SignupForm> : <LoginFromForm></LoginFromForm>
             }
 
         </div>

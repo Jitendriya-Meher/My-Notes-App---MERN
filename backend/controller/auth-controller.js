@@ -139,7 +139,7 @@ const changePassword = async ( req, res) => {
         const compOldPassword = await bcrypt.compare(oldPassword, dbUser.password);
 
         if( !compOldPassword){
-            return res.status(400).json({
+            return res.status(200).json({
                 message:"old password doesnot match",
                 success:false
             });
@@ -150,7 +150,7 @@ const changePassword = async ( req, res) => {
         const newUser = await User.findByIdAndUpdate(userID,{password:newHashPassword},{new:true});
 
         return res.status(200).json({
-            message:"password successfully",
+            message:"password successfully change",
             success: true,
             user: newUser
         });

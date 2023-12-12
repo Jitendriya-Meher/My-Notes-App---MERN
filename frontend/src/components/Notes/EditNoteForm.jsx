@@ -67,13 +67,13 @@ const EditNoteForm = () => {
     onSubmit={handleEdit}
     >
 
-        <label htmlFor="">
+        <label htmlFor="a">
             <p className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'>
                 Note Title
              <span className='text-pink-200'> *</span>
              </p>
             <input type="text" name="title"
-            id="" required
+            id="a" required
             value={title}
             onChange={(e) => {
                 setTitle(e.target.value);
@@ -83,13 +83,13 @@ const EditNoteForm = () => {
             />
         </label>
 
-        <label htmlFor="">
+        <label htmlFor="b">
             <p className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'>
                 Note Description
              <span className='text-pink-200'> *</span>
              </p>
             <textarea type="text" name="title"
-            id="" required
+            id="b" required
             rows={7}
             value={desc}
             onChange={(e) => {

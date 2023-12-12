@@ -1,7 +1,7 @@
 import Template from "../components/Auth/Template";
 import loginImg from "../assets/login.png";
 
-function Login({ setIsLoggedIn }) {
+function Login() {
   return (
     <Template
       title="Welcome Back"
@@ -9,7 +9,6 @@ function Login({ setIsLoggedIn }) {
       description2="Education to future-proof your career."
       image={loginImg}
       formType="login"
-      setIsLoggedIn={setIsLoggedIn}
     />
   );
 }

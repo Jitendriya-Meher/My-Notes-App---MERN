@@ -1,7 +1,7 @@
 import Template from "../components/Auth/Template";
 import signupImg from "../assets/signup.png";
 
-function Signup({ setIsLoggedIn }) {
+function Signup() {
   return (
     <Template
       title="Join the millions learning to code with StudyNotion for free"
@@ -9,7 +9,6 @@ function Signup({ setIsLoggedIn }) {
       description2="Education to future-proof your career."
       image={signupImg}
       formType="signup"
-      setIsLoggedIn={setIsLoggedIn}
     />
   );
 }

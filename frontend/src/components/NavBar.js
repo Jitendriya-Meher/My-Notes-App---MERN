@@ -4,11 +4,14 @@ import logo from "../assets/Logo.svg";
 import { Link, NavLink } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import "./NavBar.css"
+import { useDispatch, useSelector } from 'react-redux';
+import { logOutAuth } from '../store/slices/authSlice';
 
-const NavBar = (props) => {
+const NavBar = () => {
 
 
-    let {isLoggedin, setIsLoggedIn} = props;
+    const {isLoggedin} = useSelector(state=>state.auth);
+    const dispatch = useDispatch();
 
   return (
     <div className='flex justify-between items-center w-11/12 max-w-[1160px] py-4 mx-auto'>
@@ -71,7 +74,7 @@ const NavBar = (props) => {
             <NavLink to="/">
                 <button onClick={
                     () => {
-                        setIsLoggedIn(false);
+                        dispatch(logOutAuth());
                         toast.success("Logged Out!");
                     }
                 } className='py-[8px] bg-richblack-800 px-[12px] rounded-[8px] border border-richblack-700'>Log Out</button>

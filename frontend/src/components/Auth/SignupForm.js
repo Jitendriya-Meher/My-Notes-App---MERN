@@ -59,13 +59,14 @@ const SignupForm = () => {
 
         <div className="flex w-full justify-between gap-x-4">
 
-            <label className="w-full">
+            <label className="w-full" htmlFor='a'>
                 <p
                 className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'
                 >First Name <span className='text-pink-200'>*</span></p>
                 <input type="text"
                 required
                 placeholder='Enter First Name'
+                id='a'
                 className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[8px] border-b-[1px] outline-1'
                 value={firstName}
                 onChange={(e) => {
@@ -73,12 +74,13 @@ const SignupForm = () => {
                 }}
                 />
             </label>
-            <label className="w-full">
+            <label className="w-full" htmlFor='b'>
                 <p
                 className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'
                 >Last Name <span className='text-pink-200'>*</span></p>
                 <input type="text"
                 required
+                id='b'
                 placeholder='Enter Last Name'
                 className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[8px] border-b-[1px] outline-1'
                 value={lastName}
@@ -89,12 +91,13 @@ const SignupForm = () => {
             </label>
         </div>
 
-        <label htmlFor="">
+        <label htmlFor="c">
             <p
             className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem] mt-1'
             >Emial Address <span className='text-pink-200'>*</span></p>
             <input type="email"
             required
+            id='c'
             placeholder='Enter Email Address'
             className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[8px] border-b-[1px] outline-1 mb-1'
             value={email}
@@ -105,12 +108,13 @@ const SignupForm = () => {
         </label>
 
         <div className="flex gap-x-4 justify-between w-full">
-            <label className="relative w-full">
+            <label className="relative w-full" htmlFor='d'>
                 <p
                 className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'
                 >Create Password <span className='text-pink-200'>*</span></p>
                 <input type={showPassword1 ? "text" : "password"}
                 required
+                id='d'
                 placeholder='Enter Password'
                 onChange={(e)=>{
                     setPassword(e.target.value);
@@ -127,12 +131,13 @@ const SignupForm = () => {
                     {showPassword1 ? (<AiOutlineEyeInvisible fontSize={24} fill='#afb2bf'></AiOutlineEyeInvisible>) : (<AiOutlineEye fontSize={24} fill='#afb2bf'></AiOutlineEye>)}
                 </span>
             </label>
-            <label className="relative w-full">
+            <label className="relative w-full" htmlFor='e'>
                 <p
                 className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'
                 >Confirm Password <span className='text-pink-200'> *</span></p>
                 <input type={showPassword2 ? "text" : "password"}
                 required
+                id='e'
                 placeholder='Confirm Password'
                 onChange={
                     (e)=>{
