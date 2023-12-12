@@ -1,10 +1,13 @@
 import React from 'react'
+import AboutTemplate from '../components/AboutTemplate'
+import aboutImg from "../assets/aboutus2.webp";
 
 const About = () => {
   return (
-    <div className="flex flex-1 justify-center items-center text-white text-3xl h-full">
-    About
-    </div>
+    <AboutTemplate
+    title="About StudyNotion"
+    image={aboutImg}
+    ></AboutTemplate>
   )
 }
 

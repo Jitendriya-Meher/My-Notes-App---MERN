@@ -1,10 +1,15 @@
 import React from 'react'
+import contactus from "../assets/aboutus3.webp";
+import ContactTemplate from '../components/ContactTemplate';
 
 const Contact = () => {
   return (
-    <div className="flex flex-1 justify-center items-center text-white text-3xl">
-    Contact
-    </div>
+    <ContactTemplate
+    title="Ask your queries here..."
+    description1="Build skills for today, tomorrow, and beyond."
+    description2="Education to future-proof your career."
+    image={contactus}
+    ></ContactTemplate>
   )
 }
 

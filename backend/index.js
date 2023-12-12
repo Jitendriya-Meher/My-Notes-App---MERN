@@ -17,8 +17,10 @@ app.use(cors());
 // import routes
 const authRoute = require("./routes/auth-route.js");
 const noteRoute = require("./routes/note-route.js");
+const contactRoute = require("./routes/contact-route.js");
 app.use("/api/auth",authRoute);
 app.use("/api/note",noteRoute);
+app.use("/api/contact",contactRoute);
 
 // mount routes
 

@@ -14,6 +14,7 @@ import EditNotes from "./pages/EditNotes";
 import Note from "./pages/Note";
 import DeleteNote from "./pages/DeleteNote";
 import { useSelector } from "react-redux";
+import BackButton from "./components/BackButton";
 
 function App() {
 
@@ -22,6 +23,8 @@ function App() {
   return <div className="w-screen min-h-screen bg-richblack-900 flex flex-col">
 
     <NavBar></NavBar>
+
+    <BackButton></BackButton>
 
     <Routes>
 
