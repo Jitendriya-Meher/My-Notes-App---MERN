@@ -1,8 +1,16 @@
 import React from 'react'
 import NoteTemplate from '../components/Notes/NoteTemplate'
 import signupImg from "../assets/signup.png";
+import { useSelector } from 'react-redux';
+import Loading from '../components/Loading';
 
 const EditNotes = () => {
+  const auth = useSelector(state=>state.auth);
+
+  if( auth.loading){
+    return <Loading></Loading>
+  }
+  
   return (
     <NoteTemplate
       title="Edit Notes Here..."

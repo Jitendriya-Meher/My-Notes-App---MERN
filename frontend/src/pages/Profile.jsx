@@ -3,8 +3,16 @@ import ChangeProfile from '../components/Profile/ChangeProfile';
 import DeleteAllNotes from '../components/Profile/DeleteAllNotes';
 import ChnagePassword from '../components/Profile/ChnagePassword';
 import DeleteAccount from '../components/Profile/DeleteAccount';
+import { useSelector } from 'react-redux';
+import Loading from '../components/Loading';
 
 const Profile = () => {
+
+  const auth = useSelector(state=>state.auth);
+
+  if( auth.loading ) {
+    return <Loading></Loading>
+  }
 
   return (
     <div className="flex w-11/12 max-w-[1160px] py-4 pt-8 mx-auto gap-x-12 gap-y-0 justify-between flex-wrap gap-12">
@@ -22,8 +30,6 @@ const Profile = () => {
         <DeleteAccount></DeleteAccount>
             
       </div>
-
-
     </div>
   )
 }

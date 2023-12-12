@@ -16,11 +16,23 @@ const NoteCard = ({reference,index,item}) => {
     <motion.div drag dragConstraints={reference} whileDrag={{scale:1.1}} className={`w-60 h-72 rounded-[50px] bg-richblack-800/90 text-white py-9 px-7 relative overflow-hidden flex-shrink-0 border-2 border-richblack-700`}>
 
       <p className=' text-md font-semibold leading-tight'>
-        {title}
+        {
+          title.length <= 30 ? (
+            `${title}`
+          ):(
+            `${title.substring(0, 30)}...`
+          )
+        }
       </p>
 
-      <p className=" text-sm mt-5 font-semibold leading-tight">
-        {description}
+      <p className=" text-sm mt-3 font-semibold leading-tight">
+        {
+          description.length <= 100 ? (
+            `${description}`
+          ):(
+            `${description.substring(0, 100)}...`
+          )
+        }
       </p>
 
       <div className=" absolute bottom-0 w-full left-0">

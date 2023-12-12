@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { editAuth } from '../../store/slices/authSlice';
+import { editAuth, setLoading } from '../../store/slices/authSlice';
+import Loading from '../Loading';
 
 const ChangeProfile = () => {
 
@@ -18,6 +19,7 @@ const ChangeProfile = () => {
       if( !conf){
         return;
       }
+      dispatch(setLoading(true));
 
       try{
         const res = await axios.patch(`http://localhost:4000/api/auth/edit/profile`,{
@@ -45,6 +47,7 @@ const ChangeProfile = () => {
       catch(err){
         toast.error("error while changing the profile");
       }
+      dispatch(setLoading(false));
     }
 
   return (

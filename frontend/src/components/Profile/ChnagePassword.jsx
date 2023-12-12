@@ -2,7 +2,9 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import Loading from '../Loading';
+import { setLoading } from '../../store/slices/authSlice';
 
 const ChnagePassword = () => {
 
@@ -15,6 +17,7 @@ const ChnagePassword = () => {
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -33,6 +36,7 @@ const ChnagePassword = () => {
         return;
       }
 
+      dispatch(setLoading(true));
       try{
         const res = await axios.patch(`http://localhost:4000/api/auth/password`,{
           oldPassword,newPassword
@@ -54,6 +58,7 @@ const ChnagePassword = () => {
       catch(err){
         toast.error("error while changing the passord");
       }
+      dispatch(setLoading(false));
     }
 
   return (

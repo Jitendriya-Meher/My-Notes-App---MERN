@@ -4,7 +4,8 @@ const initialState = {
   username:"",
   email:"",
   token:"",
-  isLoggedin:false
+  isLoggedin:false,
+  loading:false
 };
 
 export const authSlice = createSlice({
@@ -28,11 +29,14 @@ export const authSlice = createSlice({
         state.token = "";
         state.username = "";
         state.email = "";
+      },
+      setLoading:(state,action) => {
+        state.loading = action.payload;
       }
     },
 })
   
 // Action creators are generated for each case reducer function
-export const { logInAuth, editAuth, logOutAuth } = authSlice.actions
+export const { logInAuth, editAuth, logOutAuth, setLoading } = authSlice.actions
   
 export default authSlice.reducer

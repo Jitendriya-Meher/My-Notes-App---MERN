@@ -6,7 +6,7 @@ dotenv.config();
 const authMiddleware = async(req,res,next) => {
 
     const token = req.headers.authorization;
-    console.log("token", token);
+    // console.log("token", token);
 
     if( !token){
         return res.status(200).json({
@@ -33,7 +33,7 @@ const authMiddleware = async(req,res,next) => {
         });
 
         if( !userData){
-            return res.status(400).json({
+            return res.status(200).json({
                 message:"User not found",
                 success:false
             });
@@ -46,7 +46,7 @@ const authMiddleware = async(req,res,next) => {
         next();
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             msg:"error in token",
             error:err.message,
             success:false

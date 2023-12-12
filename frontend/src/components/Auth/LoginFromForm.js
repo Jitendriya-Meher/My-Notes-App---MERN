@@ -4,7 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { logInAuth } from '../../store/slices/authSlice';
+import { logInAuth, setLoading } from '../../store/slices/authSlice';
+import Loading from '../Loading';
 
 const LoginFromForm = (props) => {
 
@@ -28,7 +29,7 @@ const LoginFromForm = (props) => {
 
     async function submitHandler(e){
         e.preventDefault();
-
+        dispatch(setLoading(true));
         try{
             const res = await axios.post(`http://localhost:4000/api/auth/login`,formData);
             console.log("res",res.data);
@@ -52,6 +53,7 @@ const LoginFromForm = (props) => {
         catch(err){
             toast.error("please try again");
         }
+        dispatch(setLoading(false));
     }
 
   return (

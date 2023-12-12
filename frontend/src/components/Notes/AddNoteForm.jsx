@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import toast from 'react-hot-toast';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../Loading';
+import { setLoading } from '../../store/slices/authSlice';
 
 const AddNoteForm = ({noteTitle,noteDesc}) => {
 
@@ -10,11 +12,13 @@ const AddNoteForm = ({noteTitle,noteDesc}) => {
     const [desc, setDesc] = useState(noteDesc);
     const auth = useSelector(state=>state.auth);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const authToken = `Bearer ${auth.token}`;
         console.log("auth token: " , authToken);
+        dispatch(setLoading(true));
         try{
             const res = await axios.post(`http://localhost:4000/api/note/add`,
                 {title, description:desc},{
@@ -38,6 +42,7 @@ const AddNoteForm = ({noteTitle,noteDesc}) => {
             toast.error("please try again");
             return;
         }
+        dispatch(setLoading(false))
     }
 
   return (

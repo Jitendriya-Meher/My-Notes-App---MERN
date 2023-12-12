@@ -1,13 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import Loading from '../components/Loading';
 
 const DeleteNote = () => {
 
     const [note,setNotes] = useState({});
     const {id} = useParams();
     const navigate = useNavigate();
+    const auth = useSelector(state=>state.auth);
 
     const getNote = async () => {
         try{
@@ -58,6 +61,10 @@ const DeleteNote = () => {
     useEffect(()=>{
         getNote();
     },[]);
+
+    if( auth.loading){
+        return <Loading></Loading>
+    }
 
   return (
     <div className="flex w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-0 justify-between">

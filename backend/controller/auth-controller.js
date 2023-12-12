@@ -35,7 +35,7 @@ const loginController = async (req,res) => {
         });
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             message: "login fail, please try again",
             success: false
         });
@@ -71,7 +71,7 @@ const signupController = async (req,res) => {
         });
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             message: "signup fail, please try again",
             success: false
         });
@@ -93,7 +93,7 @@ const deleteAccount = async (req, res) => {
         });
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             message:"server Error while deleting user account",
             success:false
         });
@@ -108,7 +108,7 @@ const editProfile = async (req, res) => {
         const newUser = await User.findByIdAndUpdate(userID, {username,email},{new:true});
 
         if( !newUser){
-            return res.status(400).json({
+            return res.status(200).json({
                 userID,
                 message:"user not found",
             });
@@ -121,7 +121,7 @@ const editProfile = async (req, res) => {
         });
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             message:"server Error while edit user profile",
             success:false
         });
@@ -156,7 +156,7 @@ const changePassword = async ( req, res) => {
         });
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             message:"server Error while changing password",
             success:false
         });

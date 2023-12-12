@@ -2,6 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
+import Loading from '../Loading';
+import { useDispatch } from 'react-redux';
+import { setLoading } from '../../store/slices/authSlice';
 
 const EditNoteForm = () => {
 
@@ -10,6 +13,7 @@ const EditNoteForm = () => {
 
     const {id} = useParams();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const getNote = async () => {
         try{
@@ -38,6 +42,7 @@ const EditNoteForm = () => {
 
     const handleEdit = async (e) => {
         e.preventDefault();
+        dispatch(setLoading(true));
         try{
             const res = await axios.patch(`http://localhost:4000/api/note/edit/${id}`,{title,description:desc});
             console.log("res",res);
@@ -55,6 +60,7 @@ const EditNoteForm = () => {
         catch(err){
             toast.error("error in editing note");
         }
+        dispatch(setLoading(false));
     }
 
     useEffect(()=>{

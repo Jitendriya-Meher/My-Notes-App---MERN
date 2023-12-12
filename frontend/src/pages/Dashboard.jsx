@@ -1,22 +1,24 @@
-
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import NoteCard from "../components/Notes/NoteCard";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Loading from "../components/Loading";
+import { setLoading } from "../store/slices/authSlice";
 
 function Dashboard() {
 
   const ref = useRef(null);
   const [query, setQuery] = useState("");
   const [notes,setNotes] = useState([]);
+  const [queryNotes, setQueryNotes] = useState([]);
+  const dispatch = useDispatch();
 
   const auth = useSelector(state=>state.auth);
   console.log("auth", auth);
 
-  const arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26];
-
   const getAllNotes = async () => {
+    dispatch(setLoading(true));
     try{
       const res = await axios.get(`http://localhost:4000/api/note/all`,{
         headers:{
@@ -26,26 +28,41 @@ function Dashboard() {
       console.log("res",res.data);
 
       setNotes(res.data.note);
+      setQueryNotes(res.data.note);
     }
     catch(err){
       toast.error("please wait...");
     }
+    dispatch(setLoading(false));
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newNotes = notes.filter((note) => (note.title.includes(query)));
+    setQueryNotes(newNotes);
   }
 
   useEffect(()=>{
     getAllNotes();
   },[]);
 
+  if( auth.loading){
+    return <Loading></Loading>
+  }
+
   return (
     <div className="flex w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-0 justify-between flex-col">
 
-      <form className=" flex gap-x-8 w-11/12 mx-auto justify-center items-center">
-      <label htmlFor="" className=" w-full">
+      <form className=" flex gap-x-8 w-11/12 mx-auto justify-center items-center"
+      onSubmit={handleSubmit}>
+      <label htmlFor="a" className=" w-full">
             <input type="search" name="text"
-            id="" required
+            id="a" required
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
+              const newNotes = notes.filter((note) => (note.title.includes(e.target.value)));
+              setQueryNotes(newNotes);
             }}
             placeholder='Search your notes by title'
             className='bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] border-b-[1px] outline-1'
@@ -68,7 +85,7 @@ function Dashboard() {
 
       <div className="w-full p-10 pt-6 flex gap-8 flex-wrap" ref={ref}>
         {
-          notes.map((item,index) =>(
+          queryNotes.map((item,index) =>(
             <NoteCard key={index} index={index} item={item} reference={ref}></NoteCard>
           ))
         }

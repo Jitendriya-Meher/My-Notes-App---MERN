@@ -1,11 +1,13 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useState } from 'react'
 import toast from 'react-hot-toast';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoading } from '../../store/slices/authSlice';
 
 const DeleteAllNotes = () => {
 
   const auth = useSelector(state=>state.auth);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,6 +16,7 @@ const DeleteAllNotes = () => {
       return;
     }
 
+    dispatch(setLoading(true));
     try{
       const res = await axios.delete(`http://localhost:4000/api/note/delete/all`,{
         headers:{
@@ -32,6 +35,7 @@ const DeleteAllNotes = () => {
     catch(err){
       toast.error("error while changing the profile");
     }
+    dispatch(setLoading(false));
   }
 
   return (

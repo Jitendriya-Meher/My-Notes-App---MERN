@@ -3,6 +3,8 @@ import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai";
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Loading from '../Loading';
+import { useDispatch } from 'react-redux';
 
 const SignupForm = () => {
 
@@ -13,11 +15,14 @@ const SignupForm = () => {
     const [firstName,setFirstName] = useState("");
     const [lastName,setLastName] = useState("");
     const [email,setEmail] = useState("");
+    const [loading,setLoading] = useState(false);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     
     async function submitHandler(e){
         e.preventDefault();
+        dispatch(setLoading(true));
         if( password !== confirmPassword){
             toast.error("Passwords do not match");
             return;
@@ -50,6 +55,7 @@ const SignupForm = () => {
             toast.error("please try again");
             return;
         }  
+        dispatch(setLoading(false))
     }
 
   return (

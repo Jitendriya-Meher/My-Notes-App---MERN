@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { logOutAuth } from '../../store/slices/authSlice';
+import { logOutAuth, setLoading } from '../../store/slices/authSlice';
+import Loading from '../Loading';
 
 const DeleteAccount = () => {
 
@@ -16,6 +17,7 @@ const DeleteAccount = () => {
       return;
     }
 
+    dispatch(setLoading(true));
     try{
       const res = axios.delete(`http://localhost:4000/api/auth/delete`,{
         headers:{
@@ -36,8 +38,9 @@ const DeleteAccount = () => {
     catch(err){
       toast.error("error while changing the profile");
     }
+    dispatch(setLoading(false));
   }
-
+  
   return (
     <div className="p-5 rounded-xl border-2 border-richblack-800 bg-gray-900/30">
 

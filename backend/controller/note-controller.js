@@ -20,7 +20,7 @@ const addNote = async ( req, res) => {
         });
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             message:"server Error while adding notes",
             success:false
         });
@@ -42,7 +42,7 @@ const getAllNotes = async (req, res) => {
         });
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             message:"server Error while fetching user notes",
             success:false
         });
@@ -56,7 +56,7 @@ const getSingleNote = async (req, res) => {
         const note = await Note.findOne({_id:noteID});
 
         if( !note){
-            return res.status(400).json({
+            return res.status(200).json({
                 message:"note not found",
                 success:false
             });
@@ -69,7 +69,7 @@ const getSingleNote = async (req, res) => {
         });
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             message:"server Error while fetching note",
             success:false
         });
@@ -86,7 +86,7 @@ const editNote = async (req, res) => {
         const note = await Note.findByIdAndUpdate(noteID,{title, description},{new:true});
 
         if( !note){
-            return res.status(400).json({
+            return res.status(200).json({
                 message:"note not found",
                 success:false
             });
@@ -99,7 +99,7 @@ const editNote = async (req, res) => {
         });
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             message:"server Error while editing note",
             success:false
         });
@@ -113,7 +113,7 @@ const deleteNote = async (req, res) => {
         const delNote = await Note.findByIdAndDelete(noteID);
 
         if( !delNote){
-            return res.status(400).json({
+            return res.status(200).json({
                 message:"note not found",
                 success:false
             });
@@ -126,7 +126,7 @@ const deleteNote = async (req, res) => {
         });
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             message:"server Error while deleting note",
             success:false
         });
@@ -147,7 +147,7 @@ const deleteAllNote = async (req,res) => {
         });
     }
     catch(err){
-        return res.status(500).json({
+        return res.status(200).json({
             message:"server Error while deleting all note",
             success:false
         });
