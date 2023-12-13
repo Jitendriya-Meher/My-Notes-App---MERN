@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux';
-import Loading from '../Loading';
+import { BsFillShieldLockFill } from "react-icons/bs";
 import { setLoading } from '../../store/slices/authSlice';
 
 const ChnagePassword = () => {
@@ -160,8 +160,13 @@ const ChnagePassword = () => {
                 </label>
                 </div>
 
-                <button className=' bg-yellow-500 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-4 w-full'>
-                  Change your Password
+                <button
+                className=' bg-yellow-500 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] flex mt-8 items-center justify-center gap-x-4'
+                >
+                    <p className="text-[1.1rem]">
+                        Change your Password
+                    </p>
+                    <BsFillShieldLockFill size={26}></BsFillShieldLockFill>
                 </button>
 
               </form>

@@ -3,7 +3,7 @@ import {AiOutlineEye,AiOutlineEyeInvisible} from "react-icons/ai";
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Loading from '../Loading';
+import { FaUser } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { setLoading } from '../../store/slices/authSlice';
 
@@ -165,7 +165,14 @@ const SignupForm = () => {
             </label>
         </div>
 
-        <button className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-4 w-full'>Create Account</button>
+        <button
+        className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] flex mt-8 items-center justify-center gap-x-4'
+        >
+            <p className="text-[1.1rem]">
+                Create Account
+            </p>
+            <FaUser size={26}></FaUser>
+        </button>
 
       </form>
 

@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setLoading } from '../../store/slices/authSlice';
+import { GiNotebook } from "react-icons/gi";
 
 const AddNoteForm = ({noteTitle,noteDesc}) => {
 
@@ -85,9 +86,12 @@ const AddNoteForm = ({noteTitle,noteDesc}) => {
         
 
         <button
-        className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-8'
+        className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] flex mt-8 items-center justify-center gap-x-4'
         >
-            Create Note
+            <p className="text-[1.1rem]">
+                Create Note
+            </p>
+            <GiNotebook size={26}></GiNotebook>
         </button>
 
     </form>

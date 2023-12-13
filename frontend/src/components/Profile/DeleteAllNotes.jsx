@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading } from '../../store/slices/authSlice';
+import { MdOutlineEditOff } from "react-icons/md";
 
 const DeleteAllNotes = () => {
 
@@ -56,9 +57,14 @@ const DeleteAllNotes = () => {
               <form className='flex flex-col w-full gap-y-4 mt-1'
               onSubmit={handleSubmit}>
 
-              <button className='bg-orange-600 rounded-[8px] font-medium px-[12px] py-[8px] mt-4 w-full text-richblack-900'>
-                Delete your all Notes
-              </button>
+              <button
+                className=' bg-orange-600  rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] flex mt-8 items-center justify-center gap-x-4'
+                >
+                    <p className="text-[1.1rem]">
+                        Delete your all Notes
+                    </p>
+                    <MdOutlineEditOff size={26}></MdOutlineEditOff>
+                </button>
 
               </form>
 

@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setLoading } from '../../store/slices/authSlice';
+import { FaEdit } from "react-icons/fa";
 
 const EditNoteForm = () => {
 
@@ -106,10 +107,12 @@ const EditNoteForm = () => {
         
 
         <button
-        className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-8'
-        
+        className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] flex mt-8 items-center justify-center gap-x-4'
         >
-            Edit Note
+            <p className="text-[1.1rem]">
+                Edit Note
+            </p>
+            <FaEdit size={26}></FaEdit>
         </button>
 
     </form>

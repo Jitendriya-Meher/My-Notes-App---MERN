@@ -2,6 +2,7 @@ import React from 'react'
 import contactus from "../assets/aboutus3.webp";
 import ContactTemplate from '../components/ContactTemplate';
 
+
 const Contact = () => {
   return (
     <ContactTemplate

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutAuth, setLoading } from '../../store/slices/authSlice';
-import Loading from '../Loading';
+import { FaUserSlash } from "react-icons/fa";
 
 const DeleteAccount = () => {
 
@@ -59,9 +59,14 @@ const DeleteAccount = () => {
               <form className='flex flex-col w-full gap-y-4 mt-2'
               onSubmit={handleSubmit}>
 
-              <button className='bg-red-600 rounded-[8px] font-medium px-[12px] py-[8px] mt-4 w-full text-richblack-900'>
-                Delete your Account
-              </button>
+              <button
+                className=' bg-red-600  rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] flex mt-8 items-center justify-center gap-x-4'
+                >
+                    <p className="text-[1.1rem]">
+                        Delete your Account
+                    </p>
+                    <FaUserSlash size={26}></FaUserSlash>
+                </button>
 
               </form>
 

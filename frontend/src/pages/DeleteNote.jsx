@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Loading from '../components/Loading';
+import { MdDeleteForever } from "react-icons/md";
 
 const DeleteNote = () => {
 
@@ -84,11 +85,15 @@ const DeleteNote = () => {
             <h1 className='text-richblack-5 font-semibold text-[2rem] leading-[2.3rem]'>
                 Are you sure you want to delete this note ?
             </h1>
+
             <button
-            className='bg-red-500 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-8 w-full'
+            className='bg-red-500 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] w-full flex mt-8 items-center justify-center gap-x-2'
             onClick={handleDelete}
             >
-                Delete Note
+                <p className="text-[1.1rem]">
+                    Delete Note
+                </p>
+                <MdDeleteForever size={26}></MdDeleteForever>
             </button>
         </div>
 

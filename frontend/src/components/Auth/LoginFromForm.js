@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { logInAuth, setLoading } from '../../store/slices/authSlice';
+import { PiSignInBold } from "react-icons/pi";
 
 const LoginFromForm = (props) => {
 
@@ -104,8 +105,13 @@ const LoginFromForm = (props) => {
         </label>
 
         <button
-        className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-8'
-        >Sign In</button>
+        className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] flex mt-8 items-center justify-center gap-x-2'
+        >
+            <p className="text-[1.1rem]">
+                Sign In
+            </p>
+            <PiSignInBold size={26}></PiSignInBold>
+        </button>
 
     </form>
   )

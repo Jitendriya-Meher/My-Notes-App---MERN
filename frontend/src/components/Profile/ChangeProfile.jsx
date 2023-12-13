@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { editAuth, setLoading } from '../../store/slices/authSlice';
-
+import { FaUserEdit } from "react-icons/fa";
 const ChangeProfile = () => {
 
     const auth = useSelector(state=>state.auth);
@@ -99,8 +99,13 @@ const ChangeProfile = () => {
                     />
                 </label>
 
-                <button className='bg-blue-700 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-4 w-full'>
-                  Edit your Proflie
+                <button
+                className='bg-blue-700 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] flex mt-8 items-center justify-center gap-x-4'
+                >
+                    <p className="text-[1.1rem]">
+                        Edit your Profile
+                    </p>
+                    <FaUserEdit size={26}></FaUserEdit>
                 </button>
 
               </form>

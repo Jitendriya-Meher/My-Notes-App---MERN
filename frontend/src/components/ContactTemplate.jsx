@@ -3,6 +3,7 @@ import frameImage from "../assets/frame.png";
 import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { IoIosSend } from "react-icons/io";
 
 const ContactTemplate = (props) => {
 
@@ -88,10 +89,10 @@ const ContactTemplate = (props) => {
                 
 
                 <button
-                className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] mt-8'
-                
+                className='bg-yellow-50 rounded-[8px] font-medium text-richblack-900 px-[12px] py-[8px] flex mt-8 items-center  justify-center gap-2'
                 >
-                    Send message
+                    <p className=' text-[1.1rem]'>Send message</p> 
+                    <IoIosSend size={26}/>
                 </button>
 
             </form>

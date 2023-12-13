@@ -1,9 +1,10 @@
 import React from 'react'
 import { motion } from "framer-motion"
 import { Link } from 'react-router-dom';
-import { CiEdit } from "react-icons/ci";
+import { FaEdit } from "react-icons/fa";
 import { FaFileAlt } from "react-icons/fa";
-import { MdDeleteForever } from "react-icons/md";
+import { Tooltip } from '@mui/material';
+import { TbEditOff } from "react-icons/tb";
 
 const NoteCard = ({reference,index,item}) => {
 
@@ -39,19 +40,25 @@ const NoteCard = ({reference,index,item}) => {
 
         <div className={`w-full py-4 ${randomColor} flex justify-center items-center gap-x-2 text-2xl`}>
             <Link to={`/note/${_id}`}>
+              <Tooltip title="show" arrow placement='top'>
                 <button className="bg-blue-600 rounded-[8px] font-bold px-[12px] py-[8px] w-full text-richblack-900">
                     <FaFileAlt />
                 </button>
+              </Tooltip>
             </Link>
           <Link to={`/edit/${_id}`}>
-            <button className="bg-yellow-600 rounded-[8px] font-bold px-[12px] py-[8px] w-full text-richblack-900">
-                <CiEdit />
-            </button>
+              <Tooltip title="Edit" arrow placement='top'>
+                <button className="bg-yellow-600 rounded-[8px] font-extrabold px-[12px] py-[8px] w-full text-richblack-900">
+                    <FaEdit />
+                </button>
+              </Tooltip>
             </Link>
             <Link to={`/delete/${_id}`}>
-            <button className="bg-red-600 rounded-[8px] font-bold px-[12px] py-[8px] w-full text-richblack-900">
-                <MdDeleteForever />
-            </button>
+              <Tooltip title="Delete" arrow placement='top'>
+                <button className="bg-red-600 rounded-[8px] font-bold px-[12px] py-[8px] w-full text-richblack-900">
+                    <TbEditOff />
+                </button>
+              </Tooltip>
             </Link>
         </div>
       </div>
