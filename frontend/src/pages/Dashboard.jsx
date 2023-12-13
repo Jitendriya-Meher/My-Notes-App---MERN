@@ -84,11 +84,25 @@ function Dashboard() {
             </div>
 
       <div className="w-full p-10 pt-6 flex gap-8 flex-wrap" ref={ref}>
-        {
-          queryNotes.map((item,index) =>(
-            <NoteCard key={index} index={index} item={item} reference={ref}></NoteCard>
-          ))
-        }
+
+          {
+            (notes.length===0) ? (
+              <p className=" text-gray-300 text-xl m-8 mx-auto">
+                Please Add Some Notes...
+              </p>
+            ):(
+              (queryNotes.length===0) ? (
+                <p className=" text-gray-300 text-xl m-8 mx-auto">
+                  No notes found for the query {query}
+                </p>
+              ):(
+                  queryNotes.map((item,index) =>(
+                    <NoteCard key={index} index={index} item={item} reference={ref}></NoteCard>
+                  ))
+              )
+            )
+          }
+        
       </div>
     </div>
   );

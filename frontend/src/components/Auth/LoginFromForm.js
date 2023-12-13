@@ -5,7 +5,6 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { logInAuth, setLoading } from '../../store/slices/authSlice';
-import Loading from '../Loading';
 
 const LoginFromForm = (props) => {
 

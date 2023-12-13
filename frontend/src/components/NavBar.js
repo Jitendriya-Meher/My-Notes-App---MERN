@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import "./NavBar.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutAuth } from '../store/slices/authSlice';
+import BackButton from './BackButton';
 
 const NavBar = () => {
 
@@ -14,8 +15,8 @@ const NavBar = () => {
     const dispatch = useDispatch();
 
   return (
-    <div className='flex justify-between items-center w-11/12 max-w-[1160px] py-4 mx-auto'>
-     
+    <div className='flex justify-between items-center w-11/12 max-w-[1160px] py-4 mx-auto relative'>
+
      <Link to='/'>
         <img src={logo} alt='logo' width={160} height={32} loading='lazy'></img>
      </Link>

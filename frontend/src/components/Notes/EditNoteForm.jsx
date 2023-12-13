@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
-import Loading from '../Loading';
 import { useDispatch } from 'react-redux';
 import { setLoading } from '../../store/slices/authSlice';
 
@@ -17,8 +16,6 @@ const EditNoteForm = () => {
 
     const getNote = async () => {
         try{
-            console.log("id",id);
-
             const res = await axios.get(`http://localhost:4000/api/note/${id}`);
             console.log("res",res.data);
 

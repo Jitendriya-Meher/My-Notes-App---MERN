@@ -22,9 +22,6 @@ app.use("/api/auth",authRoute);
 app.use("/api/note",noteRoute);
 app.use("/api/contact",contactRoute);
 
-// mount routes
-
-
 // start server 
 app.listen(PORT, () =>{
     console.log(`server started successfully at ${PORT}`);
@@ -32,9 +29,8 @@ app.listen(PORT, () =>{
 
 //connect to the database
 const dbConnect = require('./config/database');
-const Authroute = require('./routes/auth-route');
 dbConnect();
 
 app.get('/',(req,res)=>{
-    res.send(`<h1>Welcome To MERN Project Jitendriya !!!</h1>`)
+    res.send(`<h1>Welcome To MERN Project Jitendriya !!!</h1>`);
 });

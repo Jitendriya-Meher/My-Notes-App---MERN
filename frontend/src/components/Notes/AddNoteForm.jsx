@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../Loading';
 import { setLoading } from '../../store/slices/authSlice';
 
 const AddNoteForm = ({noteTitle,noteDesc}) => {

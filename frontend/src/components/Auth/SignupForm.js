@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../Loading';
 import { useDispatch } from 'react-redux';
+import { setLoading } from '../../store/slices/authSlice';
 
 const SignupForm = () => {
 
@@ -15,14 +16,13 @@ const SignupForm = () => {
     const [firstName,setFirstName] = useState("");
     const [lastName,setLastName] = useState("");
     const [email,setEmail] = useState("");
-    const [loading,setLoading] = useState(false);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     
     async function submitHandler(e){
         e.preventDefault();
-        dispatch(setLoading(true));
+        
         if( password !== confirmPassword){
             toast.error("Passwords do not match");
             return;
@@ -38,6 +38,7 @@ const SignupForm = () => {
             password: password
         };
 
+        dispatch(setLoading(true));
         try{
             const response = await axios.post(`http://localhost:4000/api/auth/signup`,user);
             console.log("response",response);
@@ -55,7 +56,7 @@ const SignupForm = () => {
             toast.error("please try again");
             return;
         }  
-        dispatch(setLoading(false))
+        dispatch(setLoading(false));
     }
 
   return (

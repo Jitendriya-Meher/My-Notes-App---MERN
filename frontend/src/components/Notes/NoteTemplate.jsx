@@ -26,7 +26,7 @@ const NoteTemplate = (props) => {
 
         </div>
 
-        <div className="relative w-11/12 max-w-[550px] flex justify-center items-center">
+        <div className="relative w-11/12 max-w-[550px] flex justify-center items-start mt-16">
             <div className="shadow-[10px_-5px_50px_-5px] shadow-blue-200 rounded-md">
                 <video
                     className="shadow-[15px_15px_5px_rgba(200,200,200)] rounded-md"
