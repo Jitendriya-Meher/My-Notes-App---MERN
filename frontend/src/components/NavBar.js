@@ -72,14 +72,14 @@ const NavBar = () => {
         }
         {
             isLoggedin &&
-            <NavLink to="/">
+            <Link to="/">
                 <button onClick={
                     () => {
                         dispatch(logOutAuth());
                         toast.success("Logged Out!");
                     }
                 } className='py-[8px] bg-richblack-800 px-[12px] rounded-[8px] border border-richblack-700'>Log Out</button>
-            </NavLink>
+            </Link>
         }
      </div>
 
