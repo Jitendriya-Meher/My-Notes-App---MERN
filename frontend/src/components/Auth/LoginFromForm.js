@@ -31,8 +31,8 @@ const LoginFromForm = (props) => {
         e.preventDefault();
         dispatch(setLoading(true));
         try{
-            const res = await axios.post(`http://localhost:4000/api/auth/login`,formData);
-            console.log("res",res.data);
+            const res = await axios.post(`https://my-note-app-backend.onrender.com/api/auth/login`,formData);
+
             const result = res.data;
 
             if( result.success){

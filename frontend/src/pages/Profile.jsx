@@ -15,16 +15,16 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex w-11/12 max-w-[1160px] py-4 pt-8 mx-auto gap-x-12 gap-y-0 justify-between flex-wrap gap-12">
+    <div className="flex w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-10 justify-between flex-wrap">
 
-      <div className="w-11/12 max-w-[500px] flex flex-col gap-y-12 flex-wrap justify-center">
+      <div className="w-11/12 max-w-[500px] flex flex-col gap-y-12 flex-wrap justify-center mx-auto">
 
         <ChangeProfile></ChangeProfile>
         <DeleteAllNotes></DeleteAllNotes>
 
       </div>
 
-      <div className="w-11/12 max-w-[500px] flex flex-col gap-y-12 flex-wrap justify-center">
+      <div className="w-11/12 max-w-[500px] flex flex-col gap-y-12 flex-wrap justify-center mx-auto">
 
         <ChnagePassword></ChnagePassword>
         <DeleteAccount></DeleteAccount>

@@ -16,7 +16,7 @@ const NoteCard = ({reference,index,item}) => {
   return (
     <motion.div drag dragConstraints={reference} whileDrag={{scale:1.1}} className={`w-60 h-72 rounded-[50px] bg-richblack-800/90 text-white py-9 px-7 relative overflow-hidden flex-shrink-0 border-2 border-richblack-700`}>
 
-      <p className=' text-md font-semibold leading-tight'>
+      <p className=' text-md font-semibold leading-tight text-justify'>
         {
           title.length <= 30 ? (
             `${title}`
@@ -26,7 +26,7 @@ const NoteCard = ({reference,index,item}) => {
         }
       </p>
 
-      <p className=" text-sm mt-3 font-semibold leading-tight">
+      <p className=" text-sm mt-3 font-semibold leading-tight text-justify">
         {
           description.length <= 100 ? (
             `${description}`

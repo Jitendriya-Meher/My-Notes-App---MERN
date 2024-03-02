@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutAuth, setLoading } from '../../store/slices/authSlice';
@@ -19,13 +19,13 @@ const DeleteAccount = () => {
 
     dispatch(setLoading(true));
     try{
-      const res = axios.delete(`http://localhost:4000/api/auth/delete`,{
+      const res = await axios.delete(`https://my-note-app-backend.onrender.com/api/auth/delete`,{
         headers:{
           Authorization: "Bearer "+auth.token
         }
       });
 
-      const result = (await res).data;
+      const result = res.data;
 
       if( result.success){
         toast.success(result.message);
@@ -36,7 +36,7 @@ const DeleteAccount = () => {
       }
     }
     catch(err){
-      toast.error("error while changing the profile");
+      toast.error("error while deleting the user"+err);
     }
     dispatch(setLoading(false));
   }

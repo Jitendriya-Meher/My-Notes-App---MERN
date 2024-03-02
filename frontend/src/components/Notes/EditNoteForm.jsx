@@ -17,8 +17,7 @@ const EditNoteForm = () => {
 
     const getNote = async () => {
         try{
-            const res = await axios.get(`http://localhost:4000/api/note/${id}`);
-            console.log("res",res.data);
+            const res = await axios.get(`https://my-note-app-backend.onrender.com/api/note/${id}`);
 
             const result = res.data;
 
@@ -42,7 +41,7 @@ const EditNoteForm = () => {
         e.preventDefault();
         dispatch(setLoading(true));
         try{
-            const res = await axios.patch(`http://localhost:4000/api/note/edit/${id}`,{title,description:desc});
+            const res = await axios.patch(`https://my-note-app-backend.onrender.com/api/note/edit/${id}`,{title,description:desc});
             console.log("res",res);
 
             const result = res.data;

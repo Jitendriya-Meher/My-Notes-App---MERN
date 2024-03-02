@@ -15,6 +15,7 @@ import Note from "./pages/Note";
 import DeleteNote from "./pages/DeleteNote";
 import { useSelector } from "react-redux";
 import BackButton from "./components/BackButton";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
       <Route path="/contact" element={<Contact></Contact>}></Route>
       <Route path="/login" element={<Login></Login>}></Route>
       <Route path="/signup" element={<Signup></Signup>}></Route>
+      <Route path="*" element={<PageNotFound></PageNotFound>}></Route>
 
       <Route path="/dashborad" element={
         <PrivateRoute isLoggedin={isLoggedin}>

@@ -40,7 +40,7 @@ const SignupForm = () => {
 
         dispatch(setLoading(true));
         try{
-            const response = await axios.post(`http://localhost:4000/api/auth/signup`,user);
+            const response = await axios.post(`https://my-note-app-backend.onrender.com/api/auth/signup`,user);
             console.log("response",response);
             const result = response.data;
 
@@ -64,7 +64,7 @@ const SignupForm = () => {
       
       <form action="" onSubmit={submitHandler} className='w-full mt-5 flex flex-col gap-y-4'>
 
-        <div className="flex w-full justify-between gap-x-4">
+        <div className="gap-x-4 justify-between w-full md:flex">
 
             <label className="w-full" htmlFor='a'>
                 <p
@@ -114,7 +114,7 @@ const SignupForm = () => {
             />
         </label>
 
-        <div className="flex gap-x-4 justify-between w-full">
+        <div className="gap-x-4 justify-between w-full md:flex">
             <label className="relative w-full" htmlFor='d'>
                 <p
                 className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'
@@ -138,7 +138,7 @@ const SignupForm = () => {
                     {showPassword1 ? (<AiOutlineEyeInvisible fontSize={24} fill='#afb2bf'></AiOutlineEyeInvisible>) : (<AiOutlineEye fontSize={24} fill='#afb2bf'></AiOutlineEye>)}
                 </span>
             </label>
-            <label className="relative w-full" htmlFor='e'>
+            <label className="relative w-full block" htmlFor='e'>
                 <p
                 className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'
                 >Confirm Password <span className='text-pink-200'> *</span></p>

@@ -8,7 +8,7 @@ const BackButton = () => {
 
   return (
     
-    <button className=' text-white text-5xl absolute top-20 left-16 p-1'
+    <button className=' text-white text-5xl absolute top-16 left-16 p-1 hidden md:block'
     onClick={() => {
         navigate(-1);
     }}>

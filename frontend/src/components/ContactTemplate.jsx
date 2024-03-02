@@ -17,7 +17,7 @@ const ContactTemplate = (props) => {
         e.preventDefault();
 
         try{
-            const res = await axios.post(`http://localhost:4000/api/contact`,{
+            const res = await axios.post(`https://my-note-app-backend.onrender.com/api/contact`,{
                 email,message
             });
             const result = res.data;
@@ -36,9 +36,9 @@ const ContactTemplate = (props) => {
     }
     
   return (
-    <div className='flex w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-0 justify-between'>
+    <div className='flex w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-10 justify-between flex-wrap-reverse'>
 
-        <div className="w-11/12 max-w-[570px]">
+        <div className="w-11/12 max-w-[570px] mx-auto">
             <h1 className='text-richblack-5 font-semibold text-[1.8rem] leading-[2.3rem]'>{title}</h1>
             <p className='text-[0.9rem] leading-[1.2rem] mt-4'>
                 <span className='text-richblack-100'>{description1}</span>
@@ -99,7 +99,7 @@ const ContactTemplate = (props) => {
 
         </div>
 
-        <div className="relative w-11/12 max-w-[450px]">
+        <div className="relative w-11/12 max-w-[450px] mx-auto hidden md:block">
             <img src={frameImage} width={558} height={504} loading='lazy' alt=""
             className=' relative -top-2'
              />

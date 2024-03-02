@@ -17,17 +17,17 @@ const AddNoteForm = ({noteTitle,noteDesc}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const authToken = `Bearer ${auth.token}`;
-        console.log("auth token: " , authToken);
+
         dispatch(setLoading(true));
         try{
-            const res = await axios.post(`http://localhost:4000/api/note/add`,
+            const res = await axios.post(`https://my-note-app-backend.onrender.com/api/note/add`,
                 {title, description:desc},{
                     headers:{
                         Authorization: authToken
                     }
                 }
             );
-            console.log("res",res);
+
             const result = res.data;
 
             if( result.success){

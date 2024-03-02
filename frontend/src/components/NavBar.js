@@ -6,7 +6,6 @@ import toast from 'react-hot-toast';
 import "./NavBar.css"
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutAuth } from '../store/slices/authSlice';
-import BackButton from './BackButton';
 
 const NavBar = () => {
 
@@ -15,14 +14,14 @@ const NavBar = () => {
     const dispatch = useDispatch();
 
   return (
-    <div className='flex justify-between items-center w-11/12 max-w-[1160px] py-4 mx-auto relative'>
+    <div className='flex justify-between items-center w-11/12 max-w-[1160px] py-4 mx-auto flex-wrap gap-y-4 gap-x-8'>
 
-     <Link to='/'>
+     <Link to='/' className=' mx-auto'>
         <img src={logo} alt='logo' width={160} height={32} loading='lazy'></img>
      </Link>
 
-     <nav className='navbar'>
-        <ul className='flex gap-x-6 text-gray-400'>
+     <nav className='navbar mx-auto'>
+        <ul className='flex gap-x-6 text-gray-400 flex-wrap items-center justify-center'>
             <li>
                 <NavLink to="/">Home</NavLink>
             </li>
@@ -35,7 +34,7 @@ const NavBar = () => {
         </ul>
      </nav>
 
-     <div className="flex item-center gap-x-4 text-richblack-100 nav">
+     <div className="flex item-center justify-center gap-x-4 text-richblack-100 nav flex-wrap mx-auto gap-y-4 items-center">
         {
             !isLoggedin &&
             <NavLink to="/login">

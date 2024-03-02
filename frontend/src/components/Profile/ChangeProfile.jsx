@@ -21,14 +21,14 @@ const ChangeProfile = () => {
       dispatch(setLoading(true));
 
       try{
-        const res = await axios.patch(`http://localhost:4000/api/auth/edit/profile`,{
+        const res = await axios.patch(`https://my-note-app-backend.onrender.com/api/auth/edit/profile`,{
           email,username
         },{
           headers:{
             Authorization: 'Bearer ' + auth.token
           }
         });
-        console.log("response: " , res.data);
+
         const result = res.data;
 
         if( result.success){
@@ -91,7 +91,7 @@ const ChangeProfile = () => {
                     <input type="email" name="email"
                     id="b" required
                     value={email}
-                    onCanPlay={(e) => {
+                    onChange={(e) => {
                       setEmail(e.target.value);
                     }}
                     placeholder='Edit your email address'

@@ -19,8 +19,7 @@ const Note = () => {
         try{
             console.log("id",id);
 
-            const res = await axios.get(`http://localhost:4000/api/note/${id}`);
-            console.log("res",res.data);
+            const res = await axios.get(`https://my-note-app-backend.onrender.com/api/note/${id}`);
 
             const result = res.data;
 

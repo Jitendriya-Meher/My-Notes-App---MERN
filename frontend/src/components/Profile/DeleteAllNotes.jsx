@@ -19,7 +19,7 @@ const DeleteAllNotes = () => {
 
     dispatch(setLoading(true));
     try{
-      const res = await axios.delete(`http://localhost:4000/api/note/delete/all`,{
+      const res = await axios.delete(`https://my-note-app-backend.onrender.com/api/note/delete/all`,{
         headers:{
           Authorization: 'Bearer ' + auth.token
         }
@@ -34,7 +34,7 @@ const DeleteAllNotes = () => {
       }
     }
     catch(err){
-      toast.error("error while changing the profile");
+      toast.error("error while deleting the notes");
     }
     dispatch(setLoading(false));
   }

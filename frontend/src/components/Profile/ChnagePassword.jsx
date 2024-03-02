@@ -38,14 +38,14 @@ const ChnagePassword = () => {
 
       dispatch(setLoading(true));
       try{
-        const res = await axios.patch(`http://localhost:4000/api/auth/password`,{
+        const res = await axios.patch(`https://my-note-app-backend.onrender.com/api/auth/password`,{
           oldPassword,newPassword
         },{
           headers:{
             Authorization: 'Bearer ' + auth.token
           }
         });
-        console.log("res",res);
+
         const result = res.data;
 
         if( result.success){
@@ -56,7 +56,7 @@ const ChnagePassword = () => {
         }
       }
       catch(err){
-        toast.error("error while changing the passord");
+        toast.error("error while changing the password");
       }
       dispatch(setLoading(false));
     }
@@ -105,7 +105,7 @@ const ChnagePassword = () => {
                     
                 </label>
 
-                <div className="flex gap-x-4 justify-between w-full mt-2">
+                <div className="gap-x-4 justify-between w-full md:flex">
                   <label htmlFor="b" className='relative w-full'>
                     <p
                     className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'>New Password <span
@@ -132,7 +132,7 @@ const ChnagePassword = () => {
                     </span>
                     
                   </label>
-                  <label htmlFor="c" className='relative w-full'>
+                  <label htmlFor="c" className='relative w-full block'>
                     <p
                     className='text-[0.88rem] text-richblack-5 mb-1 leading-[1.38rem]'>Confirm New Password <span
                     className='text-pink-200'>*</span></p>

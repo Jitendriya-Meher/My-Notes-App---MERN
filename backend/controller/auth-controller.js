@@ -109,8 +109,8 @@ const editProfile = async (req, res) => {
 
         if( !newUser){
             return res.status(200).json({
-                userID,
                 message:"user not found",
+                success:false
             });
         }
 
@@ -122,7 +122,7 @@ const editProfile = async (req, res) => {
     }
     catch(err){
         return res.status(200).json({
-            message:"server Error while edit user profile",
+            message: err.message,
             success:false
         });
     }

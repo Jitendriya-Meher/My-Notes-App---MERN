@@ -15,10 +15,8 @@ const DeleteNote = () => {
 
     const getNote = async () => {
         try{
-            console.log("id",id);
 
-            const res = await axios.get(`http://localhost:4000/api/note/${id}`);
-            console.log("res",res.data);
+            const res = await axios.get(`https://my-note-app-backend.onrender.com/api/note/${id}`);
 
             const result = res.data;
 
@@ -28,12 +26,12 @@ const DeleteNote = () => {
             }
             else{
                 toast.error(result.message);
-                navigate("/dashboard");
+                navigate("/dashborad");
             }
         }
         catch(err){
             toast.error("error in fetching note");
-            navigate("/dashboard");
+            navigate("/dashborad");
         }
     }
 
@@ -43,7 +41,7 @@ const DeleteNote = () => {
             return;
         }
         try{
-            const res = await axios.delete(`http://localhost:4000/api/note/delete/${id}`);
+            const res = await axios.delete(`https://my-note-app-backend.onrender.com/api/note/delete/${id}`);
             const result = res.data;
 
             if(result.success){
@@ -68,9 +66,9 @@ const DeleteNote = () => {
     }
 
   return (
-    <div className="flex w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-0 justify-between">
+    <div className="flex w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-10 justify-between flex-wrap-reverse">
 
-        <div className=" w-11/12 max-w-[750px]">
+        <div className=" w-11/12 max-w-[750px] mx-auto">
             <h1 className='text-richblack-5 font-semibold text-[2rem] leading-[2.3rem]'>
                 {note.title}
             </h1>
@@ -81,7 +79,7 @@ const DeleteNote = () => {
             </p>
         </div>
 
-        <div className=" w-11/12 max-w-[350px] mt-8">
+        <div className=" w-11/12 max-w-[350px] mt-0 md:mt-8 mx-auto">
             <h1 className='text-richblack-5 font-semibold text-[2rem] leading-[2.3rem]'>
                 Are you sure you want to delete this note ?
             </h1>
